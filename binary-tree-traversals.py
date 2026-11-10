@@ -35,9 +35,25 @@ class BinaryTree:
             return False
         if node.val == val:
             return True
-        if val < node.val:
+        elif val < node.val:
             return self._search_recursive(node.left, val)
-        return self._search_recursive(node.right, val)
+        else:
+            return self._search_recursive(node.right, val)
+
+    def dfs(self, val):
+        return self._search_recursive(self.root, val)
+
+    def dfs_recursive(self, node, val):
+        if node:
+            print(node.data)
+        if not node:
+            return False
+        if node.val == val:
+            return True
+        if self.dfs_recursive(node.left, val):
+            return True
+        if self.dfs_recursive(node.right, val):
+            return True
 
     def preorder_traversal(self):
         result = []
